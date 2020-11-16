@@ -1,0 +1,43 @@
+######################################################
+###           Configuration file for               ###
+###              My application                    ###
+######################################################
+
+
+root_folder: "/root/folder/for/smth/"
+
+some_attribute:
+    A: "A"
+    B:  "B"
+
+
+######################################################
+###                 Logging                        ###
+######################################################
+## Keep below structure - this format is expected by python's logging module
+
+logging:
+
+    version: 1
+    disable_existing_loggers: true # TO DO - tratar esta variavel
+
+    handlers:
+        console:
+            class: logging.StreamHandler
+            color: True
+            output: 'stdout'
+            formatter: "%(color_on)s[%(asctime)s] [%(filename)s] [%(levelname)s] %(message)s%(color_off)s"
+            datefmt: '%Y/%m/%d %H:%M:%S'
+            level: ERROR
+        file:
+            class : logging.FileHandler
+            formatter: "%(color_on)s[%(asctime)s] [%(filename)-25s] [%(levelname)-8s] %(message)s%(color_off)s"
+            level: DEBUG
+            backupCount: 10
+            sizePerFile: 1 # in MB
+            ## Note that file does not have to exist, but the directories (in case of full path name) should
+            filename: reference_data_manager2.log
+
+    root:
+        level: DEBUG # TO DO --> fazer o set
+        handlers: [console, file]
